@@ -1,0 +1,23 @@
+{{ define "body" }}
+<div>
+	<h1>Choose Your Own Adventure!</h1>
+	<h2>Current Arc: {{ .Title }}</h2>
+	{{ range .Story }}
+		<p>{{ . }}</p>
+  {{ end }}
+  {{ if .Paths }}
+	<div>Your Options:</div>
+	<ul>
+		{{ range .Paths }}
+			<li>
+				<a href="/{{ .NodeName }}">
+					{{ .Text }}
+				</a>
+			</li>
+		{{ end }}
+  </ul>
+  {{ else }}
+    <div>The End!</div>
+  {{ end }}
+</div>
+{{ end }}
